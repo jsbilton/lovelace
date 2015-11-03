@@ -4,7 +4,13 @@
     <meta charset="utf-8">
     <title>Juan on One</title>
     <link rel="stylesheet" href="bower_components/bootstrap/dist/css/bootstrap.css" media="screen" title="no title" charset="utf-8">
-l    <link rel="stylesheet" href="/styles.css" media="screen" title="no title" charset="utf-8">
+    <link rel="stylesheet" href="/styles.css" media="screen" title="no title" charset="utf-8">
+    <script type="text/html" id="msgTmpl">
+      <div class="message">
+        <span class="user"></span>
+        <span class="messageText"><%=text%></span>
+      </div>
+    </script>
   </head>
   <body>
     <header class="col-md-12">
@@ -21,5 +27,11 @@ l    <link rel="stylesheet" href="/styles.css" media="screen" title="no title" c
     </form>
 
   </body>
+
   <script src="bower_components/jquery/dist/jquery.js" charset="utf-8"></script>
+  <script src="main.js" charset="utf-8"></script>
+  <script src="edit.js" charset="utf-8"></script>
+  <script src="delete.js" charset="utf-8"></script>
+  <script src="post.js" charset="utf-8"></script>
+  <script src="display.js" charset="utf-8"></script>
 </html>
