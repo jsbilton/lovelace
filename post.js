@@ -1,30 +1,23 @@
-var post () {
-  url:
-  init: function ()
-    post.initStyling();
-    post.initEvents();
+var Post = {
+   init: function() {
+        Post.initStyling();
+        Post.initEvents();
+    },
+    initStyling: function() {},
+    createPost: function(event) {
+        // event.preventDefault();
+        var newPost = new Message($('textarea').val());
+        $('textarea').val('');
+        $.ajax( {
+            url: chatPage.messageURL,
+            method: 'POST',
+            data: newPost,
+            success: function(response) {
+                console.log(response);
+                var postHTML = chatPage.messageTemplate(newPost);
+                $('.messages').append(postHTML);
 
-},
-  initStyling: function (){
-
-},
-  createPost: function (event) {
-    event.preventDefault();
-    var newPost = {
-      user: $('input[name="type"]').val(),
-      message: $('input[name="message"]').val(),
-    };
-    $('input [type="text"]').val('');
-    $.ajax(){
-      url: post.url,
-      method: 'POST',
-      data: newPost,
-      success: function (response){
-        console.log(response);
-        $('.message').html('');
-        post.getPost();
-      }
-
-    }
-
-},
+            }
+        })
+    },
+}
