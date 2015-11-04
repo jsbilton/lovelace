@@ -20,15 +20,15 @@ var chatPage = {
   },
   events: function () {
     Display.events();
-    // Edit.events();
+    Edit.events();
     Post.events();
-    // Delete.events();
+    Delete.events();
   },
   styling: function(){
     Display.styling();
-    // Edit.styling();
+    Edit.styling();
     Post.styling();
-    // Delete.styling();
+    Delete.styling();
   },
 }
 
