@@ -21,9 +21,8 @@ var Login = {
             return (user.name===username && user.password ===password);
           });
           if (user){
-            chatPage.currentUser = user;
+            chatPage.login(user);
             chatPage.init();
-            user.loggedIn = true;
           }
         },
         failure:function (data) {
