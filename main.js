@@ -21,14 +21,14 @@ var chatPage = {
   events: function () {
     Display.events();
     Edit.events();
-    Post.events();
-    Delete.events();
+    // Post.events();
+    // Delete.events();
   },
   styling: function(){
     Display.styling();
     Edit.styling();
-    Post.styling();
-    Delete.styling();
+    // Post.styling();
+    // Delete.styling();
   },
 }
 

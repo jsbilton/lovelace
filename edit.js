@@ -15,29 +15,29 @@ var Edit = {
     styling: function() {},
     events: function() {
         $(".messages").on("dblclick", ".message", function() {
-            $(this).children(".chat")[0].contentEditable = true;
+            $(this).children(".messageText")[0].contentEditable = true;
         });
         $(".messages").on("keypress", ".message", function(event) {
             if (event.charCode === 13) {
-                $(this).children(".chat")[0].contentEditable =
+                $(this).children(".messageText")[0].contentEditable =
                     false;
+                    Edit.editMessage()
             }
         });
     },
-    editMessage: function(messages, $editedMsg) {
+    editMessage: function(message, $editedMsg) {
         $.ajax({
             type: 'PUT',
             url: messageUrl,
-            data: messageL,
+            data: message,
             success: function(editedMessages) {
-                console.log('you changed me yayyy',
-                    editedMessages);
-                console.log($editedMsg);
+                console.log('you changed me yayyy', editedMessages)
+                console.log($editedMsg)
             },
             failure: function(editedMessages) {
                 console.log('not working here you',
-                    editedMessages);
-            },
-        });
+                    editedMessages)
+            }
+        })
     }
 };
