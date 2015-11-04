@@ -21,24 +21,14 @@ var chatPage = {
   events: function () {
     Display.events();
     Edit.events();
-<<<<<<< HEAD
     // Post.events();
     // Delete.events();
-=======
-    Post.events();
-    Delete.events();
->>>>>>> 03ebc5e4cc9124e99948c2309420f56167fb281c
   },
   styling: function(){
     Display.styling();
     Edit.styling();
-<<<<<<< HEAD
     // Post.styling();
     // Delete.styling();
-=======
-    Post.styling();
-    Delete.styling();
->>>>>>> 03ebc5e4cc9124e99948c2309420f56167fb281c
   },
 }
 
