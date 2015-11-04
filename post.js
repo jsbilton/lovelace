@@ -5,13 +5,14 @@ var Post = {
     },
     styling: function() {},
     events: function() {
-      $('form').on('submit',function (event) {
+      $('.chatter-box').on('submit',function (event) {
         event.preventDefault();
         Post.createPost();
       });
     },
     createPost: function() {
-        var newPost = new Message($('.form-control').val(),chatPage.currentUser);
+        var user = chatPage.currentUser;
+        var newPost = new Message($('.form-control').val(),user.name,user._id, user.avatar);
         $('.form-control').val('');
         $.ajax( {
             url: chatPage.messageURL,

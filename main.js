@@ -1,7 +1,9 @@
-var Message = function (text,user) {
+var Message = function (text,userName, userID, userAvatar) {
   this.text = text || "I'm too dumb to use a chat app correctly.";
   this.time = Date.now();
-  this.user = user;
+  this.userName = userName;
+  this.userID = userID;
+  this.userAvatar = userAvatar;
 };
 
 var User = function(name, password, avatarURL){
