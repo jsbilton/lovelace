@@ -25,18 +25,20 @@ var Edit = {
             }
         });
     },
-    editMessage: function(message, $editedMsg) {
+    editMessage: function(event) {
+      var newMsg = new Message ($('.messages').val(),'user');
+      $('.messages').val('');
         $.ajax({
             type: 'PUT',
-            url: messageUrl,
-            data: message,
-            success: function(editedMessages) {
-                console.log('you changed me yayyy', editedMessages)
-                console.log($editedMsg)
+            url: chatPage.messageUrl + "/" +  messageId,
+            data: newMsg,
+            success: function(res) {
+                console.log('you changed me yayyy ', res)
             },
-            failure: function(editedMessages) {
-                console.log('not working here you',
-                    editedMessages)
+            failure: function(res) {
+                console.log('not working here you ', res);
+                var edittHTML = chatPage.messageTemplate(newMsg);
+                $('.messages').append(edittHTML);
             }
         })
     }
