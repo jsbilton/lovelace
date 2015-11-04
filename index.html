@@ -8,7 +8,8 @@
     <script type="text/html" id="msgTmpl">
       <div class="message">
         <span class="user"></span>
-        <span class="messageText"><%=text%></span>
+        <span class="messageText"><%=text%></span><span data-index="<%=_id%>" class="delete hidden">X</span>
+
       </div>
     </script>
   </head>
@@ -25,7 +26,7 @@
         <input type="password" name="name" value="">
       </form> -->
     </section>
-    <section class = "messages col-md-8 hidden">
+    <section class = "col-md-8 hidden messages">
 
     </section>
 
@@ -39,7 +40,7 @@
   <script src="bower_components/jquery/dist/jquery.js" charset="utf-8"></script>
   <script src="bower_components/underscore/underscore.js" charset="utf-8"></script>
   <script src="edit.js" charset="utf-8"></script>
-  <!-- <script src="delete.js" charset="utf-8"></script> -->
+  <script src="delete.js" charset="utf-8"></script>
   <script src="post.js" charset="utf-8"></script>
   <script src="display.js" charset="utf-8"></script>
   <script src="main.js" charset="utf-8"></script>
