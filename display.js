@@ -10,11 +10,10 @@ var Display = {
     Display.getMessages();
   },
   loadMessages: function (messageData) {
-    var messageHTML="";
     _.each(messageData,function (message) {
-      messageHTML+=chatPage.messageTemplate(message);
+      $(".messages").prepend(chatPage.messageTemplate(message));
     });
-    $(".messages").html(messageHTML);
+
   },
   getMessages: function () {
     $.ajax({
