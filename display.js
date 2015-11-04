@@ -7,12 +7,14 @@ var Display = {
 
   },
   styling:function(){
-    Display.getMessages();
+    setInterval(Display.getMessages,2000);
+    // Display.getMessages();
     $(".messages").removeClass("hidden");
     $(".chatter-box").removeClass("hidden");
     $(".loginSection").addClass("hidden");
   },
   loadMessages: function (messageData) {
+    $(".messages").html("");
     _.each(messageData,function (message) {
       $(".messages").prepend(chatPage.messageTemplate(message));
     });
