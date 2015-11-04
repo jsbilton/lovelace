@@ -44,7 +44,7 @@ var Login = {
           success: function(response) {
               console.log("SUCCESS",response);
               chatPage.currentUser=user;
-              Display.init();
+              chatPage.init();
           },
           failure: function (response) {
             console.log("FAILED", response);
