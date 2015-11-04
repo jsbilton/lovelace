@@ -16,12 +16,17 @@ var Delete = {
         $(this).children('.delete').addClass("hidden");
         });
     $('.messages').on('click', '.delete', function(event){
-          var deleteMes = $(this).closest('div');
+          var deleteMes = $(this).closest('div')
           console.log(deleteMes);
-          var messageID = $(this).data('index');
+          var messageID = $(this).data('index')
           console.log(messageID);
-          Delete.deleteText(messageID, deleteMes);
-        });
+          var name = $(this).siblings('span[class="user"]').text();
+          if(name === chatPage.currentUser.name){
+              Delete.deleteText(messageID, deleteMes)
+            } else{
+              alert('You cant do that');
+            }
+          });
   },
   deleteText: function(messageID, deleteMes) {
 
