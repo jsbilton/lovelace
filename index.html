@@ -6,8 +6,8 @@
     <link rel="stylesheet" href="bower_components/bootstrap/dist/css/bootstrap.css" media="screen" title="no title" charset="utf-8">
     <link rel="stylesheet" href="styles.css" media="screen" title="no title" charset="utf-8">
     <script type="text/html" id="msgTmpl">
-      <div class="message">
-        <span class="user"></span>
+      <div class="message" data-id="<%=_id%>">
+        <span class="user"><%=user.username%></span>
         <span class="messageText"><%=text%></span>
       </div>
     </script>
@@ -19,17 +19,19 @@
     <aside class="col-md-4">
 
     </aside>
-    <section class="login col-md-8">
-      <!-- <form  class="login">
+    <section class="loginSection col-md-8">
+      <form  class="loginForm">
         <input type="text" name="username" value="" placeholder = "Username">
-        <input type="password" name="name" value="">
-      </form> -->
+        <input type="password" name="password" value="">
+        <input type="submit" name="register" value="Register">
+        <input type="submit" name="login" value="Login">
+      </form>
     </section>
     <section class = "messages col-md-8 hidden">
 
     </section>
 
-    <section ="chatter-box">
+    <section="chatter-box" class="hidden">
             <form class="col-md-8">
         <input type="text" class="form-control" rows="3"></textarea>
       </form>
@@ -38,8 +40,9 @@
 
   <script src="bower_components/jquery/dist/jquery.js" charset="utf-8"></script>
   <script src="bower_components/underscore/underscore.js" charset="utf-8"></script>
+  <script src="login.js" charset="utf-8"></script>
   <script src="edit.js" charset="utf-8"></script>
-  <!-- <script src="delete.js" charset="utf-8"></script> -->
+  <script src="delete.js" charset="utf-8"></script>
   <script src="post.js" charset="utf-8"></script>
   <script src="display.js" charset="utf-8"></script>
   <script src="main.js" charset="utf-8"></script>

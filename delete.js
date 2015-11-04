@@ -7,7 +7,7 @@ var Delete = {
   },
   events: function(){
     $('.messages').on('mouseover', function(event){
-      _.append('<span class="delete">X</span>');
+      $(".message").append('<span class="delete">X</span>');
     });
     $('.delete').on('click', function(event){
       deleteText(data);
