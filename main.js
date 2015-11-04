@@ -11,6 +11,7 @@ var User = function(name, password, avatarURL){
     this.password = password;
     this.avatar = avatarURL || chatPage.defaultURL;
     this.loggedIn = false;
+
 };
 
 var chatPage = {
@@ -28,6 +29,10 @@ var chatPage = {
     Edit.events();
     Post.events();
     Delete.events();
+    var user = chatPage.currentUser;
+    window.addEventListener("beforeunload", function() {
+      chatPage.logout(user);
+    });
   },
   styling: function(){
     Display.styling();
@@ -35,6 +40,37 @@ var chatPage = {
     Post.styling();
     Delete.styling();
   },
+  login: function (user) {
+    chatPage.currentUser = user;
+    user.loggedIn=true;
+    $.ajax({
+      type: 'PUT',
+      url: chatPage.userURL+"/"+user._id,
+      data: user,
+      success:function (data) {
+        console.log("User Logged in: ", data);
+        // Display.loadMessages(data);
+      },
+      failure:function (data) {
+        console.log("Failed to log in: ", data);
+      }
+    });
+  },
+  logout: function (user) {
+    user.loggedIn=false;
+    $.ajax({
+      type: 'PUT',
+      url: chatPage.userURL+"/"+user._id,
+      data: user,
+      success:function (data) {
+        console.log("User Logged out: ", data);
+        // Display.loadMessages(data);
+      },
+      failure:function (data) {
+        console.log("Failed to log out: ", data);
+      }
+    });
+}
 }
 
 $(document).ready(function () {
