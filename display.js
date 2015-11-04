@@ -8,6 +8,7 @@ var Display = {
   },
   styling:function(){
     Display.getMessages();
+    $(".messages").removeClass("hidden");
   },
   loadMessages: function (messageData) {
     _.each(messageData,function (message) {
