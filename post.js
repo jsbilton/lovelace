@@ -5,7 +5,6 @@ var Post = {
     },
     initStyling: function() {},
     createPost: function(event) {
-        // event.preventDefault();
         var newPost = new Message($('textarea').val());
         $('textarea').val('');
         $.ajax( {
@@ -16,7 +15,7 @@ var Post = {
                 console.log(response);
                 var postHTML = chatPage.messageTemplate(newPost);
                 $('.messages').append(postHTML);
-
+                $('form').on('submit', Post.createPost);
             }
         })
     },
