@@ -8,7 +8,7 @@ var Post = {
       $('form').on('submit', Post.createPost);
     },
     createPost: function(event) {
-        var newPost = new Message($('.form-control').val());
+        var newPost = new Message($('.form-control').val(),chatPage.currentUser);
         $('.form-control').val('');
         $.ajax( {
             url: chatPage.messageURL,

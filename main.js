@@ -4,9 +4,11 @@ var Message = function (text,user) {
   this.user = user;
 };
 
-var User = function(name, avatarURL){
+var User = function(name, password, avatarURL){
     this.name = name;
-    this.avatar = avatarURL || defaultURL;
+    this.password = password;
+    this.avatar = avatarURL || chatPage.defaultURL;
+    this.loggedIn = false;
 };
 
 var chatPage = {
@@ -14,6 +16,7 @@ var chatPage = {
   messageTemplate: _.template($("#msgTmpl").html()),
   messageURL: "http://tiny-tiny.herokuapp.com/collections/lovelace-messages",
   userURL: "http://tiny-tiny.herokuapp.com/collections/lovelace-users",
+  currentUser:"",
   init: function () {
     chatPage.events();
     chatPage.styling();
@@ -22,16 +25,16 @@ var chatPage = {
     Display.events();
     Edit.events();
     Post.events();
-    // Delete.events();
+    Delete.events();
   },
   styling: function(){
     Display.styling();
     Edit.styling();
     Post.styling();
-    // Delete.styling();
+    Delete.styling();
   },
 }
 
 $(document).ready(function () {
-  chatPage.init();
+  Login.init();
 });

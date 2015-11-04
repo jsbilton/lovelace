@@ -9,6 +9,8 @@ var Display = {
   styling:function(){
     Display.getMessages();
     $(".messages").removeClass("hidden");
+    $(".chatter-box").removeClass("hidden");
+    $(".loginSection").addClass("hidden");
   },
   loadMessages: function (messageData) {
     _.each(messageData,function (message) {
