@@ -5,9 +5,12 @@ var Post = {
     },
     styling: function() {},
     events: function() {
-      $('form').on('submit', Post.createPost);
+      $('form').on('submit',function (event) {
+        event.preventDefault();
+        Post.createPost();
+      });
     },
-    createPost: function(event) {
+    createPost: function() {
         var newPost = new Message($('.form-control').val(),chatPage.currentUser);
         $('.form-control').val('');
         $.ajax( {
@@ -16,7 +19,7 @@ var Post = {
             data: newPost,
             success: function(response) {
                 console.log(response);
-                var postHTML = chatPage.messageTemplate(newPost);
+                var postHTML = chatPage.messageTemplate(response);
                 $('.messages').append(postHTML);
             }
         })

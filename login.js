@@ -22,7 +22,7 @@ var Login = {
           });
           if (user){
             chatPage.currentUser = user;
-            Display.init();
+            chatPage.init();
             user.loggedIn = true;
           }
         },
