@@ -9,50 +9,36 @@
 //     $editText.css('display','inline-block');
 //
 //   })
-
 //on double-clicking an item, allow them to edit it
-
-var edit(){
-  init: function(){
-
-  }
-  styling: function(){
-
-  }
-  events: function()}
-
-}
-
-
-
-  $(".messages").on("dblclick",".message",function () {
-    $(this).children(".chat")[0].contentEditable=true;
-  });
-
-
-  $(".messages").on("keypress",".message",function (event){
-
-    if(event.charCode===13){
-      $(this).children(".chat")[0].contentEditable=false;
-
+var Edit = {
+    init: function() {},
+    styling: function() {},
+    events: function() {
+        $(".messages").on("dblclick", ".message", function() {
+            $(this).children(".messageText")[0].contentEditable = true;
+        });
+        $(".messages").on("keypress", ".message", function(event) {
+            if (event.charCode === 13) {
+                $(this).children(".messageText")[0].contentEditable =
+                    false;
+                    Edit.editMessage()
+            }
+        });
+    },
+    editMessage: function(message, $editedMsg) {
+        $.ajax({
+            type: 'PUT',
+            url: messageUrl,
+            data: message,
+            success: function(editedMessages) {
+                console.log('you changed me yayyy', editedMessages)
+                console.log($editedMsg)
+            },
+            failure: function(editedMessages) {
+                console.log('not working here you',
+                    editedMessages)
+            }
+        })
     }
 
-  });
-
-
-
-  editMessage: function (messages, $editedMsg) {
-    $.ajax({
-      type: 'PUT',
-      url: messageUrl,
-      data: messageL,
-      success: function(editedMessages){
-        console.log('you changed me yayyy', editedMessages)
-        console.log($editedMsg)
-      };
-      failure: function(editedMessages){
-        console.log('not working here you', editedMessages)
-      }
-
-    })
-  }
+};
