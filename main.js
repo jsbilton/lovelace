@@ -22,13 +22,13 @@ var chatPage = {
     Display.events();
     Edit.events();
     // Post.events();
-    // Delete.events();
+    Delete.events();
   },
   styling: function(){
     Display.styling();
     Edit.styling();
     // Post.styling();
-    // Delete.styling();
+    Delete.styling();
   },
 }
 
