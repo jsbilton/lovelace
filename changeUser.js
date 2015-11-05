@@ -60,11 +60,11 @@ editUserInSpace: function(user, $editedField) {  
  	          },
  	          failure: function(data){
  	            console.log("Failed");
-          }
-
-        })
-
-        
+            }
+ 	        });
+ 	      }
+ 	    });
+ 	  },
 // var global
 // var global
 // $.ajax({
