@@ -17,9 +17,11 @@ var User = function(name, password, avatarURL){
 var chatPage = {
   defaultURL: "http://placekitten.com.s3.amazonaws.com/homepage-samples/200/286.jpg",
   messageTemplate: _.template($("#msgTmpl").html()),
+  userTemplate: _.template($("#usrTmpl").html()),
   messageURL: "http://tiny-tiny.herokuapp.com/collections/sally-messages",
   userURL: "http://tiny-tiny.herokuapp.com/collections/sally-users",
   currentUser:"",
+  loggedInUsers : [],
   init: function () {
     chatPage.events();
     chatPage.styling();
@@ -30,6 +32,9 @@ var chatPage = {
     Post.events();
     Delete.events();
     var user = chatPage.currentUser;
+    $(".logout").click(function (){
+      chatPage.logout(user);
+    });
     window.addEventListener("beforeunload", function() {
       chatPage.logout(user);
     });
@@ -39,6 +44,7 @@ var chatPage = {
     Edit.styling();
     Post.styling();
     Delete.styling();
+    chatPage.getLoggedInUsers();
   },
   login: function (user) {
     chatPage.currentUser = user;
@@ -64,13 +70,33 @@ var chatPage = {
       data: user,
       success:function (data) {
         console.log("User Logged out: ", data);
-        // Display.loadMessages(data);
+        $(".messages").addClass("hidden");
+        $(".chatter-box").addClass("hidden");
+        $(".loginSection").removeClass("hidden");
       },
       failure:function (data) {
         console.log("Failed to log out: ", data);
       }
     });
-}
+  },
+  getLoggedInUsers: function () {
+    $.ajax({
+      type: 'GET',
+      url: chatPage.userURL,
+      success:function (data) {
+        console.log("Users retrieved: ", data);
+        chatPage.loggedInUsers = _.filter(data, function (user) {
+          return (user.loggedIn=="true");
+        });
+        _.each(chatPage.loggedInUsers, function (user) {
+          $(".users").append(chatPage.userTemplate(user));
+        });
+      },
+      failure:function (data) {
+        console.log("Failed to retrieve users: ", data);
+      }
+    });
+  },
 }
 
 $(document).ready(function () {
