@@ -11,6 +11,7 @@
 //   })
 //on double-clicking an item, allow them to edit it
  var Edit = {
+    $editedField: "",
     init: function() {
       Edit.styling();
       Edit.events();
@@ -20,22 +21,28 @@
     },
     events: function() {
         $('.col-md-4').on('dblclick', '.textEdit', function() {
-          var $editField = $(this).attr('contentEditable', 'true');
-          var name = $(this).siblings('span[class="user"]').text();
-          if(name === chatPage.currentUser.name){
+          Edit.$editedField = $(this).attr('contentEditable', 'true');
+          if($(this).text() === chatPage.currentUser.name){
             $(this).attr('contentEditable', 'true');
           } else {
             alert('You cant do that');
           }
 
         });
+        $('.col-md-4').on('keypress', '.textEdit', function(event) {
+          if(event.charCode===13){
+            chatPage.currentUser.name = $(this).text();
+            Edit.editUser(chatPage.currentUser, Edit.$editedField);
+            $(this).attr('contentEditable', 'false');
+          }
+        });
 
     },
 
-    editUserInSpace: function(user,$editedField) {
+    editUser: function(user,$editedField) {
        $.ajax({
          type: 'PUT',
-         url: userURL + data.id,
+         url: chatPage.userURL + '/' + user._id,
          data: user,
          success: function(editedUser) {
            console.log("I WAS CHANGED: ", editedUser);
@@ -46,7 +53,7 @@
            // $editedField.parent().siblings('h3').html('<img src="' + editedBitter.avatar +'">');
          },
          failure: function(editedUser) {
-           console.log('IM STILL A FAILURE: ', editedBitter);
+           console.log('IM STILL A FAILURE:');
          }
        })
      }
