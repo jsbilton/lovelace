@@ -28,11 +28,11 @@ editUserInSpace: function(user, $editedField) {  
                success: function(editedUser) {    
                   console.log("I WAS CHANGED: ", editedUser);    
                   console.log($editedField);   
-                var $editedField  = $('this');
-                var userText = $editedField.parent().css('display', 'none');   
-                var userID = $editedField.parent().siblings('').text(
-                    editedBitter.bitter);   
-                var  = $editedField.parent().siblings('h3').html('');   
+                var $editedField  = $('this').text();
+                // var userText = $editedField.parent().css('display', 'none');   
+                // var userID = $editedField.parent().siblings('').text(
+                //     editedBitter.bitter);   
+                // var  = $editedField.parent().siblings('h3').html('');   
             },
                failure: function(editedUser) {    
                 console.log('IM STILL A FAILURE: ', editedBitter);   
@@ -69,7 +69,7 @@ editUserInSpace: function(user, $editedField) {  
 
 $('.loginSection').on('edit', function(event){
   event.preventDefault();
-  var $editField = $(this).siblings('')
+  var $editField = $(this).text
   $editField.css('display', 'inline-block');
 })
 
@@ -91,6 +91,9 @@ $('.loginSection').on('edit', function(event){
     }
 
     };
+
+
+
 
 // var global
 // var global
