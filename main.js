@@ -82,6 +82,7 @@ var chatPage = {
   },
   getLoggedInUsers: function () {
     $.ajax({
+      async:false,
       type: 'GET',
       url: chatPage.userURL,
       success:function (data) {
