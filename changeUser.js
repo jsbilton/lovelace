@@ -16,6 +16,15 @@ newUserId.filter(function(el) {
     return chatPage.currentUser.name === el.name
 });
 }
+var global
+$.ajax({
+            method: 'PUT',
+            success: function(data) {
+                newUserId = data
+                url: chatPage.url + user._id,
+                    success: function(data) {
+                        global = data
+                    }
+            });
 
-
-document.getElementById('userID').value = 'newUserId';
+// document.getElementById('userID').value = 'newUserId';
