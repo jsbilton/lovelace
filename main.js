@@ -16,8 +16,8 @@ var User = function(name, password, avatarURL){
 var chatPage = {
   defaultURL: "http://placekitten.com.s3.amazonaws.com/homepage-samples/200/286.jpg",
   messageTemplate: _.template($("#msgTmpl").html()),
-  messageURL: "http://tiny-tiny.herokuapp.com/collections/lovelace-messages",
-  userURL: "http://tiny-tiny.herokuapp.com/collections/lovelace-users",
+  messageURL: "http://tiny-tiny.herokuapp.com/collections/sally-messages",
+  userURL: "http://tiny-tiny.herokuapp.com/collections/sally-users",
   currentUser:"",
   init: function () {
     chatPage.events();
