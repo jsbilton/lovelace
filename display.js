@@ -8,10 +8,10 @@ var Display = {
   },
   styling:function(){
     setInterval(Display.getMessages,2000);
-    // Display.getMessages();
     $(".messages").removeClass("hidden");
     $(".chatter-box").removeClass("hidden");
     $(".loginSection").addClass("hidden");
+    $(".logout").removeClass("hidden");
   },
   loadMessages: function (messageData) {
     $(".messages").html("");

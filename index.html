@@ -7,7 +7,7 @@
     <link rel="stylesheet" href="styles.css" media="screen" title="no title" charset="utf-8">
     <script type="text/html" id="msgTmpl">
       <div class="message">
-        <span class ="user"><%=userName%></span>
+        <span class ="user"><%=userName%>: </span>
         <span class="messageText"><%=text%></span><span data-index="<%=_id%>" class="delete hidden">X</span>
       </div>
     </script>
@@ -41,7 +41,7 @@
         <input type="text" class="form-control" rows="3"></textarea>
       </form>
     </section>
-    <button class="logout">Logout</button>
+    <button class="logout hidden">Logout</button>
   </body>
 
   <script src="bower_components/jquery/dist/jquery.js" charset="utf-8"></script>

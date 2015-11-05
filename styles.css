@@ -46,6 +46,6 @@ h1 {
   margin: 10px auto;
   border: none; }
 
-.delete {
+.delete, .user {
   font-size: 2em;
   margin: 10px; }
