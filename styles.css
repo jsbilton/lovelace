@@ -22,6 +22,7 @@ h1 {
   border-radius: 4%; }
 
 .messages {
+  height: 550px;
   overflow: scroll; }
 
 .col-md-4 {
@@ -45,3 +46,7 @@ h1 {
   padding: 5px;
   margin: 10px auto;
   border: none; }
+
+.delete, .user {
+  font-size: 2em;
+  margin: 10px; }

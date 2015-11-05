@@ -11,6 +11,8 @@ var Login = {
       event.preventDefault();
       var username = $('input[name="username"]').val();
       var password = $('input[name="password"]').val();
+      $('input[name="username"]').val("");
+      $('input[name="password"]').val("");
       $.ajax({
         type: 'GET',
         url: chatPage.userURL,
@@ -21,9 +23,11 @@ var Login = {
             return (user.name===username && user.password ===password);
           });
           if (user){
-            chatPage.currentUser = user;
+            chatPage.login(user);
             chatPage.init();
-            user.loggedIn = true;
+          }
+          else{
+            alert("Wrong username/password combo.");
           }
         },
         failure:function (data) {
