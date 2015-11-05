@@ -23,7 +23,7 @@ newUserId.filter(function(el) {
 editUserInSpace: function(user, $editedField) {  
         $.ajax({   
             type: 'PUT',
-               url: userURL + data.id,
+               url: userURL + '/' + userID.id,
                data: user,
                success: function(editedUser) {    
                   console.log("I WAS CHANGED: ", editedUser);    
@@ -65,6 +65,33 @@ editUserInSpace: function(user, $editedField) {  
  	      }
  	    });
  	  },
+
+
+$('.loginSection').on('edit', function(event){
+  event.preventDefault();
+  var $editField = $(this).siblings('')
+  $editField.css('display', 'inline-block');
+})
+
+
+// last evening try
+    $.ajax({
+            type: 'GET',
+            url: chatPage.userURL + ”/“ + userId.id,
+    	        success: function(data) {
+    	          chatPage.serverData = data;
+                chatPage.editedField(oldUserId, newUserId);
+              },
+                success: function(){
+                  console.log('Success');
+                }
+                failure: function(){
+                  console.log('Failed', data);
+                }
+    }
+
+    };
+
 // var global
 // var global
 // $.ajax({
