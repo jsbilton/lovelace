@@ -26,7 +26,7 @@ var Display = {
       type: 'GET',
       url: chatPage.messageURL,
       success:function (data) {
-        console.log("Messages retrieved: ", data);
+
         Display.loadMessages(data);
       },
       failure:function (data) {
