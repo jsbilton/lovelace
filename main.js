@@ -44,7 +44,7 @@ var chatPage = {
     Edit.styling();
     Post.styling();
     Delete.styling();
-    chatPage.getLoggedInUsers();
+    setInterval(chatPage.getLoggedInUsers(),2000);
   },
   login: function (user) {
     chatPage.currentUser = user;
@@ -73,6 +73,7 @@ var chatPage = {
         $(".messages").addClass("hidden");
         $(".chatter-box").addClass("hidden");
         $(".loginSection").removeClass("hidden");
+        $(".logout").addClass("hidden");
       },
       failure:function (data) {
         console.log("Failed to log out: ", data);
@@ -81,6 +82,7 @@ var chatPage = {
   },
   getLoggedInUsers: function () {
     $.ajax({
+      async:false,
       type: 'GET',
       url: chatPage.userURL,
       success:function (data) {
@@ -88,6 +90,7 @@ var chatPage = {
         chatPage.loggedInUsers = _.filter(data, function (user) {
           return (user.loggedIn=="true");
         });
+        $(".users").val("");
         _.each(chatPage.loggedInUsers, function (user) {
           $(".users").append(chatPage.userTemplate(user));
         });
